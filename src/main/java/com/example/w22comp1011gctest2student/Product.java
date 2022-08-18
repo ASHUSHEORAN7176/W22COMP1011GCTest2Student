@@ -14,6 +14,7 @@ public class Product {
   private double regularPrice;
   private String image;
 
+
   public double totalPurchases(){
     return salePrice+=salePrice;
   }

@@ -16,12 +16,13 @@ public class Customer {
     public double totalPurchases;
 
 
-    public Customer(String firstName, String lastName, String phoneNumber, int id, List<Product> products) {
+    public Customer(String firstName, String lastName, String phoneNumber, int id, ArrayList<Product> purchases, double totalPurchases) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.phoneNumber = phoneNumber;
         this.id = id;
-        this.products = products;
+        this.purchases = purchases;
+        this.totalPurchases = totalPurchases;
     }
 
     public String getFirstName() {
@@ -36,11 +37,24 @@ public class Customer {
         return phoneNumber;
     }
 
-    public List<Product> getProducts() {
-        return products;
-    }
 
     public int getId() {
         return id;
     }
+
+    public String getTotalSalesPrice() {
+        return "$" + String.format("%.2f",
+                getPurchases().stream().mapToDouble(arg0 -> arg0.getSalePrice()).reduce(0.0, (a, b) -> a + b));
+    }
+
+    public double getTotalSavings() {
+        return getPurchases().stream().mapToDouble(arg0 -> arg0.getRegularPrice() -
+                arg0.getSalePrice()).reduce(0.0,
+                (a, b) -> a + b);
+    }
+
+    public Boolean isSavingHigh() {
+        return getTotalSavings() >= 5;
+    }
+}
 }
