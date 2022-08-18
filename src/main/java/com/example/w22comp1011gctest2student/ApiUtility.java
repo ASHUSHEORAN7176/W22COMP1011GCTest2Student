@@ -5,23 +5,31 @@
 package com.example.w22comp1011gctest2student;
 
 import java.io.FileReader;
+import java.util.ArrayList;
+
 
 public class ApiUtility {
-    public static ApiResponse getCustomersFromJSONFile(String fileName) {
-        //create a GSON object to parse the objects
+    public static ArrayList<Customer> getCustomersFromJSONFileArray(String fileName) {
         Gson gson = new Gson();
-        ApiResponse response = null;
 
-        //try with resources - anything inside the () will "auto close"
+
         try (
-                //open the json file from the hardrive
+                //open the json file from the harddrive
                 FileReader fileReader = new FileReader(fileName);
                 JsonReader jsonReader = new JsonReader(fileReader);
         ) {
-            //converting the JSON objects into an ApiResponse object
-            response = gson.fromJson(jsonReader, ApiResponse.class);
-        }
-        return customers;
+            //converting the JSON objects using google script object notation.
+            Customer customers = gson.fromJson(jsonReader, Customer.class);
 
+            ArrayList<Customer> arrayList = new ArrayList<>();
+
+            arrayList.add(customers);
+            System.out.println(customers);
+            return arrayList;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        return null;
     }
 }

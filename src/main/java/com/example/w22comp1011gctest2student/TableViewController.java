@@ -10,7 +10,10 @@ import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
+import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+
+import java.util.ResourceBundle;
 
 public class TableViewController {
     @FXML
@@ -65,5 +68,15 @@ public class TableViewController {
     private void loadAllCustomers()
     {
         System.out.println("called method loadAllCustomers");
+    }
+
+    @Override
+    public void initialize(URl url, ResourceBundle resourceBundle){
+        //Customer customer=new Customer();
+        idColumn.setCellValueFactory(new PropertyValueFactory<Customer,Integer>(customer.id));
+        firstNameColumn.setCellValueFactory(new PropertyValueFactory<>());
+        lastNameColumn.setCellValueFactory(new PropertyValueFactory<>());
+        phoneColumn.setCellValueFactory(new PropertyValueFactory<>());
+        tableView.getItems().addAll(ApiUtility.getCustomersFromJSONFileArray("customers"));
     }
 }

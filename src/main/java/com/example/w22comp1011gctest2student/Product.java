@@ -17,14 +17,14 @@ public class Product {
   public double totalPurchases(){
     return salePrice+=salePrice;
   }
-  public double totalSaving(){
+  public double totalSave(){
     var totalSave=regularPrice-salePrice;
     overallSave(totalSave);
     return totalSave+=totalSave;
   }
 
   public boolean overallSave(double totalSaving){
-    if(totalsave>=5.0)
+    if(totalSave>=5.0)
       return true;
     else
       return false;
