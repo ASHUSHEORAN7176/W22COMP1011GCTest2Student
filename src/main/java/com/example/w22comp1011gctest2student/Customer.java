@@ -1,3 +1,7 @@
+/*
+ *Student Name-Ashu Sheoran
+ * Student id -200485170
+ */
 package com.example.w22comp1011gctest2student;
 
 import java.lang.reflect.Array;
@@ -10,9 +14,7 @@ public class Customer {
     public ArrayList<Product> purchases;
     List<Product> products;
     public double totalPurchases;
-    public double totalPurchases(){
-        return purchases;
-    };
+
 
     public Customer(String firstName, String lastName, String phoneNumber, int id, List<Product> products) {
         this.firstName = firstName;
